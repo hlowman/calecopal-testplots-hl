@@ -2,7 +2,9 @@
 title: "Calecopal Plots"
 author: "Heili Lowman"
 date: "12/17/2019"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -12,6 +14,10 @@ knitr::opts_chunk$set(echo = TRUE)
 # "calecopal" exploration
 
 The following script will demonstrate the available color palettes as part of the "calecopal" package written by An Bui, Ana Sofia Guerra, and yours truly. For more info, go to https://github.com/an-bui/calecopal .
+
+Palettes for which only 5 colors exist have plots using a truncated version of the dataset created using the "chickwts" dataset and "tidyverse" package.
+
+NOTE: This document contains no continuous color palettes although that is a functionality of the package.
 
 Created: December 17, 2019
 Last edited: December 17, 2019
