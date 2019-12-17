@@ -1,0 +1,381 @@
+---
+title: "Calecopal Plots"
+author: "Heili Lowman"
+date: "12/17/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# "calecopal" exploration
+
+The following script will demonstrate the available color palettes as part of the "calecopal" package written by An Bui, Ana Sofia Guerra, and yours truly. For more info, go to https://github.com/an-bui/calecopal .
+
+Created: December 17, 2019
+Last edited: December 17, 2019
+
+```{r packages, results="hide"}
+library(tidyverse) # Loads tidyverse.
+library(datasets) # Loads datasets automatically available in R.
+library(calecopal) # Loads color palettes.
+```
+
+
+```{r data}
+
+data() # Explores freely available data.
+
+# We're going to first use the chickwts dataset to explore discrete color packages rather than continuous ones.
+
+#View(chickwts) # Pulls up chosen dataset.
+
+chicks <- chickwts %>% # Takes original dataset and then...
+  group_by(feed) %>% # Groups all data by "feed" column and then...
+  summarize(meanW = mean(weight, na.rm = TRUE)) %>% # Calculates the mean weight of chicks and then ...
+  ungroup() # Removes grouping so it doesn't cause formatting issues later.
+
+#View(chicks) # Displays newly created dataset.
+
+names(cal_palettes) # Take a look at the available palettes. 22 in total.
+
+```
+
+## sierra1
+
+
+```{r sierra1}
+
+plot1 <- ggplot(chicks, aes(feed, meanW, fill = feed)) + # Creates basic plot.
+  geom_bar(stat = "identity") + # Specifies bar plot.
+  scale_fill_manual(name = "Feed Type", values = cal_palette("sierra1")) + # Uses calecopal palette.
+  theme_bw() + # Removes most gridlines.
+  xlab("Feed") + # Renames x axis.
+  ylab("Mean Weight (g)") # Renames y axis.
+
+plot1 # Displays plot.
+  
+```
+
+## sierra2
+
+
+```{r sierra2, echo = FALSE}
+
+plot2 <- ggplot(chicks, aes(feed, meanW, fill = feed)) + # Creates basic plot.
+  geom_bar(stat = "identity") + # Specifies bar plot.
+  scale_fill_manual(name = "Feed Type", values = cal_palette("sierra2")) + # Uses calecopal palette.
+  theme_bw() + # Removes most gridlines.
+  xlab("Feed") + # Renames x axis.
+  ylab("Mean Weight (g)") # Renames y axis.
+
+plot2 # Displays plot.
+  
+```
+
+## chaparral1
+
+```{r chaparral1, echo = FALSE}
+
+plot3 <- ggplot(chicks, aes(feed, meanW, fill = feed)) + # Creates basic plot.
+  geom_bar(stat = "identity") + # Specifies bar plot.
+  scale_fill_manual(name = "Feed Type", values = cal_palette("chaparral1")) + # Uses calecopal palette.
+  theme_bw() + # Removes most gridlines.
+  xlab("Feed") + # Renames x axis.
+  ylab("Mean Weight (g)") # Renames y axis.
+
+plot3 # Displays plot.
+  
+```
+
+## chaparral2
+
+```{r chaparral2, echo = FALSE}
+
+plot4 <- ggplot(chicks, aes(feed, meanW, fill = feed)) + # Creates basic plot.
+  geom_bar(stat = "identity") + # Specifies bar plot.
+  scale_fill_manual(name = "Feed Type", values = cal_palette("chaparral2")) + # Uses calecopal palette.
+  theme_bw() + # Removes most gridlines.
+  xlab("Feed") + # Renames x axis.
+  ylab("Mean Weight (g)") # Renames y axis.
+
+plot4 # Displays plot.
+  
+```
+
+## chaparral3
+
+```{r chaparral3, echo = FALSE}
+
+# This package contains only 5 colors, so we'll use a truncated dataset.
+
+chicks_short <- chicks[-6,] # Removes the 6th row.
+
+plot5 <- ggplot(chicks_short, aes(feed, meanW, fill = feed)) + # Creates basic plot.
+  geom_bar(stat = "identity") + # Specifies bar plot.
+  scale_fill_manual(name = "Feed Type", values = cal_palette("chaparral3")) + # Uses calecopal palette.
+  theme_bw() + # Removes most gridlines.
+  xlab("Feed") + # Renames x axis.
+  ylab("Mean Weight (g)") # Renames y axis.
+
+plot5 # Displays plot.
+  
+```
+
+## conifer
+
+```{r conifer, echo = FALSE}
+
+plot6 <- ggplot(chicks_short, aes(feed, meanW, fill = feed)) + # Creates basic plot.
+  geom_bar(stat = "identity") + # Specifies bar plot.
+  scale_fill_manual(name = "Feed Type", values = cal_palette("conifer")) + # Uses calecopal palette.
+  theme_bw() + # Removes most gridlines.
+  xlab("Feed") + # Renames x axis.
+  ylab("Mean Weight (g)") # Renames y axis.
+
+plot6 # Displays plot.
+  
+```
+
+## desert
+
+```{r desert, echo = FALSE}
+
+plot7 <- ggplot(chicks_short, aes(feed, meanW, fill = feed)) + # Creates basic plot.
+  geom_bar(stat = "identity") + # Specifies bar plot.
+  scale_fill_manual(name = "Feed Type", values = cal_palette("desert")) + # Uses calecopal palette.
+  theme_bw() + # Removes most gridlines.
+  xlab("Feed") + # Renames x axis.
+  ylab("Mean Weight (g)") # Renames y axis.
+
+plot7 # Displays plot.
+  
+```
+
+## wetland
+
+```{r wetland, echo = FALSE}
+
+plot8 <- ggplot(chicks_short, aes(feed, meanW, fill = feed)) + # Creates basic plot.
+  geom_bar(stat = "identity") + # Specifies bar plot.
+  scale_fill_manual(name = "Feed Type", values = cal_palette("wetland")) + # Uses calecopal palette.
+  theme_bw() + # Removes most gridlines.
+  xlab("Feed") + # Renames x axis.
+  ylab("Mean Weight (g)") # Renames y axis.
+
+plot8 # Displays plot.
+  
+```
+
+## oak
+
+```{r oak, echo = FALSE}
+
+plot9 <- ggplot(chicks_short, aes(feed, meanW, fill = feed)) + # Creates basic plot.
+  geom_bar(stat = "identity") + # Specifies bar plot.
+  scale_fill_manual(name = "Feed Type", values = cal_palette("oak")) + # Uses calecopal palette.
+  theme_bw() + # Removes most gridlines.
+  xlab("Feed") + # Renames x axis.
+  ylab("Mean Weight (g)") # Renames y axis.
+
+plot9 # Displays plot.
+  
+```
+
+## kelp1
+
+```{r kelp1, echo = FALSE}
+
+plot10 <- ggplot(chicks, aes(feed, meanW, fill = feed)) + # Creates basic plot.
+  geom_bar(stat = "identity") + # Specifies bar plot.
+  scale_fill_manual(name = "Feed Type", values = cal_palette("kelp1")) + # Uses calecopal palette.
+  theme_bw() + # Removes most gridlines.
+  xlab("Feed") + # Renames x axis.
+  ylab("Mean Weight (g)") # Renames y axis.
+
+plot10 # Displays plot.
+  
+```
+
+## kelp2
+
+```{r kelp2, echo = FALSE}
+
+plot11 <- ggplot(chicks_short, aes(feed, meanW, fill = feed)) + # Creates basic plot.
+  geom_bar(stat = "identity") + # Specifies bar plot.
+  scale_fill_manual(name = "Feed Type", values = cal_palette("kelp2")) + # Uses calecopal palette.
+  theme_bw() + # Removes most gridlines.
+  xlab("Feed") + # Renames x axis.
+  ylab("Mean Weight (g)") # Renames y axis.
+
+plot11 # Displays plot.
+  
+```
+
+## coastaldune1
+
+```{r coastaldune1, echo = FALSE}
+
+plot12 <- ggplot(chicks_short, aes(feed, meanW, fill = feed)) + # Creates basic plot.
+  geom_bar(stat = "identity") + # Specifies bar plot.
+  scale_fill_manual(name = "Feed Type", values = cal_palette("coastaldune1")) + # Uses calecopal palette.
+  theme_bw() + # Removes most gridlines.
+  xlab("Feed") + # Renames x axis.
+  ylab("Mean Weight (g)") # Renames y axis.
+
+plot12 # Displays plot.
+  
+```
+
+## coastaldune2
+
+```{r coastaldune2, echo = FALSE}
+
+plot13 <- ggplot(chicks_short, aes(feed, meanW, fill = feed)) + # Creates basic plot.
+  geom_bar(stat = "identity") + # Specifies bar plot.
+  scale_fill_manual(name = "Feed Type", values = cal_palette("coastaldune2")) + # Uses calecopal palette.
+  theme_bw() + # Removes most gridlines.
+  xlab("Feed") + # Renames x axis.
+  ylab("Mean Weight (g)") # Renames y axis.
+
+plot13 # Displays plot.
+  
+```
+
+## superbloom1
+
+```{r superbloom1, echo = FALSE}
+
+plot14 <- ggplot(chicks_short, aes(feed, meanW, fill = feed)) + # Creates basic plot.
+  geom_bar(stat = "identity") + # Specifies bar plot.
+  scale_fill_manual(name = "Feed Type", values = cal_palette("superbloom1")) + # Uses calecopal palette.
+  theme_bw() + # Removes most gridlines.
+  xlab("Feed") + # Renames x axis.
+  ylab("Mean Weight (g)") # Renames y axis.
+
+plot14 # Displays plot.
+  
+```
+
+## superbloom2
+
+```{r superbloom2, echo = FALSE}
+
+plot15 <- ggplot(chicks_short, aes(feed, meanW, fill = feed)) + # Creates basic plot.
+  geom_bar(stat = "identity") + # Specifies bar plot.
+  scale_fill_manual(name = "Feed Type", values = cal_palette("superbloom2")) + # Uses calecopal palette.
+  theme_bw() + # Removes most gridlines.
+  xlab("Feed") + # Renames x axis.
+  ylab("Mean Weight (g)") # Renames y axis.
+
+plot15 # Displays plot.
+  
+```
+
+## superbloom3
+
+```{r superbloom3, echo = FALSE}
+
+plot16 <- ggplot(chicks, aes(feed, meanW, fill = feed)) + # Creates basic plot.
+  geom_bar(stat = "identity") + # Specifies bar plot.
+  scale_fill_manual(name = "Feed Type", values = cal_palette("superbloom3")) + # Uses calecopal palette.
+  theme_bw() + # Removes most gridlines.
+  xlab("Feed") + # Renames x axis.
+  ylab("Mean Weight (g)") # Renames y axis.
+
+plot16 # Displays plot.
+  
+```
+
+## sbchannel
+
+```{r sbchannel, echo = FALSE}
+
+plot17 <- ggplot(chicks_short, aes(feed, meanW, fill = feed)) + # Creates basic plot.
+  geom_bar(stat = "identity") + # Specifies bar plot.
+  scale_fill_manual(name = "Feed Type", values = cal_palette("sbchannel")) + # Uses calecopal palette.
+  theme_bw() + # Removes most gridlines.
+  xlab("Feed") + # Renames x axis.
+  ylab("Mean Weight (g)") # Renames y axis.
+
+plot17 # Displays plot.
+  
+```
+
+## lake
+
+```{r lake, echo = FALSE}
+
+plot18 <- ggplot(chicks_short, aes(feed, meanW, fill = feed)) + # Creates basic plot.
+  geom_bar(stat = "identity") + # Specifies bar plot.
+  scale_fill_manual(name = "Feed Type", values = cal_palette("lake")) + # Uses calecopal palette.
+  theme_bw() + # Removes most gridlines.
+  xlab("Feed") + # Renames x axis.
+  ylab("Mean Weight (g)") # Renames y axis.
+
+plot18 # Displays plot.
+  
+```
+
+## fire
+
+```{r fire, echo = FALSE}
+
+plot19 <- ggplot(chicks_short, aes(feed, meanW, fill = feed)) + # Creates basic plot.
+  geom_bar(stat = "identity") + # Specifies bar plot.
+  scale_fill_manual(name = "Feed Type", values = cal_palette("fire")) + # Uses calecopal palette.
+  theme_bw() + # Removes most gridlines.
+  xlab("Feed") + # Renames x axis.
+  ylab("Mean Weight (g)") # Renames y axis.
+
+plot19 # Displays plot.
+  
+```
+
+## agriculture
+
+```{r agriculture, echo = FALSE}
+
+plot20 <- ggplot(chicks_short, aes(feed, meanW, fill = feed)) + # Creates basic plot.
+  geom_bar(stat = "identity") + # Specifies bar plot.
+  scale_fill_manual(name = "Feed Type", values = cal_palette("agriculture")) + # Uses calecopal palette.
+  theme_bw() + # Removes most gridlines.
+  xlab("Feed") + # Renames x axis.
+  ylab("Mean Weight (g)") # Renames y axis.
+
+plot20 # Displays plot.
+  
+```
+
+## bigsur
+
+```{r bigsur, echo = FALSE}
+
+plot21 <- ggplot(chicks, aes(feed, meanW, fill = feed)) + # Creates basic plot.
+  geom_bar(stat = "identity") + # Specifies bar plot.
+  scale_fill_manual(name = "Feed Type", values = cal_palette("bigsur")) + # Uses calecopal palette.
+  theme_bw() + # Removes most gridlines.
+  xlab("Feed") + # Renames x axis.
+  ylab("Mean Weight (g)") # Renames y axis.
+
+plot21 # Displays plot.
+  
+```
+
+## figmtn
+
+```{r figmtn, echo = FALSE}
+
+plot22 <- ggplot(chicks, aes(feed, meanW, fill = feed)) + # Creates basic plot.
+  geom_bar(stat = "identity") + # Specifies bar plot.
+  scale_fill_manual(name = "Feed Type", values = cal_palette("figmtn")) + # Uses calecopal palette.
+  theme_bw() + # Removes most gridlines.
+  xlab("Feed") + # Renames x axis.
+  ylab("Mean Weight (g)") # Renames y axis.
+
+plot22 # Displays plot.
+  
+```
+
+End of R Markdown file.
